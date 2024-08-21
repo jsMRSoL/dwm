@@ -1,0 +1,31 @@
+#!/bin/bash
+#Set background
+hsetroot -solid "#1e1e2e"
+#swap ctrl and capslock
+set-keyboard-map
+# set up clipboard manager daemon
+clipmenud &
+# set default brightness
+brightness.sh medium
+#Enable transparency
+picom &
+#music player daemon
+mpd ~/.config/mpd/mpd.conf
+# hotkeys
+sxhkd &
+# red light protecton
+redshift &
+##data for status bar
+while true
+do
+  xsetroot -name "$(get-status)"
+  sleep 1m
+done &
+# start simacs
+simacs &
+# start myvim
+tmux-myvim &
+# start firefox
+firefox &
+#start dwm
+exec dwm
